@@ -3,21 +3,30 @@ import numpy as np
 import os
 import string
 
-# Create data directory structure
-if not os.path.exists("raw_data"):
-    os.makedirs("raw_data")
+# Create data directory1 structure
+if not os.path.exists("raw_data_alpha"):
+    os.makedirs("raw_data_alpha")
+if not os.path.exists("raw_data_digit"):
+    os.makedirs("raw_data_digit")
+
+if not os.path.exists("raw_data_alpha/_0"):
+    os.makedirs("raw_data_alpha/_0")
+
+if not os.path.exists("raw_data_digit/_0"):
+    os.makedirs("raw_data_digit/_0")
 
 for i in range(10):
-    if not os.path.exists("raw_data/" + str(i)):
-        os.makedirs("raw_data/"+str(i))
+    if not os.path.exists("raw_data_digit/" + str(i)):
+        os.makedirs("raw_data_digit/"+str(i))
 
 for i in string.ascii_uppercase:
-    if not os.path.exists("raw_data/" + i):
-        os.makedirs("raw_data/"+i)
+    if not os.path.exists("raw_data_alpha/" + i):
+        os.makedirs("raw_data_alpha/"+i)
 
 
 # Training data
-directory = 'raw_data/'
+directory1 = 'raw_data_alpha/'
+directory2 = 'raw_data_digit/'
 minValue = 75
 
 cap = cv2.VideoCapture(0)
@@ -29,46 +38,47 @@ while True:
 
     # Getting count of existing images
     count = {
-        'zero': len(os.listdir(directory+"/0")),
-        'one': len(os.listdir(directory+"/1")),
-        'two': len(os.listdir(directory+"/2")),
-        'three': len(os.listdir(directory+"/3")),
-        'four': len(os.listdir(directory+"/4")),
-        'five': len(os.listdir(directory+"/5")),
-        'six': len(os.listdir(directory+"/6")),
-        'seven': len(os.listdir(directory+"/7")),
-        'eight': len(os.listdir(directory+"/8")),
-        'nine': len(os.listdir(directory+"/9")),
-        'a': len(os.listdir(directory+"/A")),
-        'b': len(os.listdir(directory+"/B")),
-        'c': len(os.listdir(directory+"/C")),
-        'd': len(os.listdir(directory+"/D")),
-        'e': len(os.listdir(directory+"/E")),
-        'f': len(os.listdir(directory+"/F")),
-        'g': len(os.listdir(directory+"/G")),
-        'h': len(os.listdir(directory+"/H")),
-        'i': len(os.listdir(directory+"/I")),
-        'j': len(os.listdir(directory+"/J")),
-        'k': len(os.listdir(directory+"/K")),
-        'l': len(os.listdir(directory+"/L")),
-        'm': len(os.listdir(directory+"/M")),
-        'n': len(os.listdir(directory+"/N")),
-        'o': len(os.listdir(directory+"/O")),
-        'p': len(os.listdir(directory+"/P")),
-        'q': len(os.listdir(directory+"/Q")),
-        'r': len(os.listdir(directory+"/R")),
-        's': len(os.listdir(directory+"/S")),
-        't': len(os.listdir(directory+"/T")),
-        'u': len(os.listdir(directory+"/U")),
-        'v': len(os.listdir(directory+"/V")),
-        'w': len(os.listdir(directory+"/W")),
-        'x': len(os.listdir(directory+"/X")),
-        'y': len(os.listdir(directory+"/Y")),
-        'z': len(os.listdir(directory+"/Z"))
+        'space': len(os.listdir(directory2+"/_0")),
+        'zero': len(os.listdir(directory2+"/0")),
+        'one': len(os.listdir(directory2+"/1")),
+        'two': len(os.listdir(directory2+"/2")),
+        'three': len(os.listdir(directory2+"/3")),
+        'four': len(os.listdir(directory2+"/4")),
+        'five': len(os.listdir(directory2+"/5")),
+        'six': len(os.listdir(directory2+"/6")),
+        'seven': len(os.listdir(directory2+"/7")),
+        'eight': len(os.listdir(directory2+"/8")),
+        'nine': len(os.listdir(directory2+"/9")),
+        'a': len(os.listdir(directory1+"/A")),
+        'b': len(os.listdir(directory1+"/B")),
+        'c': len(os.listdir(directory1+"/C")),
+        'd': len(os.listdir(directory1+"/D")),
+        'e': len(os.listdir(directory1+"/E")),
+        'f': len(os.listdir(directory1+"/F")),
+        'g': len(os.listdir(directory1+"/G")),
+        'h': len(os.listdir(directory1+"/H")),
+        'i': len(os.listdir(directory1+"/I")),
+        'j': len(os.listdir(directory1+"/J")),
+        'k': len(os.listdir(directory1+"/K")),
+        'l': len(os.listdir(directory1+"/L")),
+        'm': len(os.listdir(directory1+"/M")),
+        'n': len(os.listdir(directory1+"/N")),
+        'o': len(os.listdir(directory1+"/O")),
+        'p': len(os.listdir(directory1+"/P")),
+        'q': len(os.listdir(directory1+"/Q")),
+        'r': len(os.listdir(directory1+"/R")),
+        's': len(os.listdir(directory1+"/S")),
+        't': len(os.listdir(directory1+"/T")),
+        'u': len(os.listdir(directory1+"/U")),
+        'v': len(os.listdir(directory1+"/V")),
+        'w': len(os.listdir(directory1+"/W")),
+        'x': len(os.listdir(directory1+"/X")),
+        'y': len(os.listdir(directory1+"/Y")),
+        'z': len(os.listdir(directory1+"/Z"))
     }
 
     # Printing the count in each set to the screen
-    cv2.putText(frame, "IMAGE COUNT", (10, 60),
+    cv2.putText(frame, "BLANK : "+str(count['space']), (10, 60),
                 cv2.FONT_HERSHEY_PLAIN, 1, (0, 255, 255), 1)
     cv2.putText(frame, "ZERO : "+str(count['zero']),
                 (10, 70), cv2.FONT_HERSHEY_PLAIN, 1, (0, 255, 255), 1)
@@ -170,79 +180,82 @@ while True:
     interrupt = cv2.waitKey(1)
     if interrupt % 256 == 27:  # esc key
         break
+    if interrupt % 256 == 32:
+        cv2.imwrite(directory1+'_0/'+str(count['space'])+'.jpg', roi)
+        cv2.imwrite(directory2+'_0/'+str(count['space'])+'.jpg', roi)
     if interrupt == ord('0'):
-        cv2.imwrite(directory+'0/'+str(count['zero'])+'.jpg', roi)
+        cv2.imwrite(directory2+'0/'+str(count['zero'])+'.jpg', roi)
     if interrupt % 256 == ord('1'):
-        cv2.imwrite(directory+'1/'+str(count['one'])+'.jpg', roi)
+        cv2.imwrite(directory2+'1/'+str(count['one'])+'.jpg', roi)
     if interrupt % 256 == ord('2'):
-        cv2.imwrite(directory+'2/'+str(count['two'])+'.jpg', roi)
+        cv2.imwrite(directory2+'2/'+str(count['two'])+'.jpg', roi)
     if interrupt % 256 == ord('3'):
-        cv2.imwrite(directory+'3/'+str(count['three'])+'.jpg', roi)
+        cv2.imwrite(directory2+'3/'+str(count['three'])+'.jpg', roi)
     if interrupt % 256 == ord('4'):
-        cv2.imwrite(directory+'4/'+str(count['four'])+'.jpg', roi)
+        cv2.imwrite(directory2+'4/'+str(count['four'])+'.jpg', roi)
     if interrupt % 256 == ord('5'):
-        cv2.imwrite(directory+'5/'+str(count['five'])+'.jpg', roi)
+        cv2.imwrite(directory2+'5/'+str(count['five'])+'.jpg', roi)
     if interrupt % 256 == ord('6'):
-        cv2.imwrite(directory+'6/'+str(count['six'])+'.jpg', roi)
+        cv2.imwrite(directory2+'6/'+str(count['six'])+'.jpg', roi)
     if interrupt % 256 == ord('7'):
-        cv2.imwrite(directory+'7/'+str(count['seven'])+'.jpg', roi)
+        cv2.imwrite(directory2+'7/'+str(count['seven'])+'.jpg', roi)
     if interrupt % 256 == ord('8'):
-        cv2.imwrite(directory+'8/'+str(count['eight'])+'.jpg', roi)
+        cv2.imwrite(directory2+'8/'+str(count['eight'])+'.jpg', roi)
     if interrupt % 256 == ord('9'):
-        cv2.imwrite(directory+'9/'+str(count['nine'])+'.jpg', roi)
+        cv2.imwrite(directory2+'9/'+str(count['nine'])+'.jpg', roi)
 
     if interrupt % 256 == ord('a'):
-        cv2.imwrite(directory+'A/'+str(count['a'])+'.jpg', roi)
+        cv2.imwrite(directory1+'A/'+str(count['a'])+'.jpg', roi)
     if interrupt % 256 == ord('b'):
-        cv2.imwrite(directory+'B/'+str(count['b'])+'.jpg', roi)
+        cv2.imwrite(directory1+'B/'+str(count['b'])+'.jpg', roi)
     if interrupt % 256 == ord('c'):
-        cv2.imwrite(directory+'C/'+str(count['c'])+'.jpg', roi)
+        cv2.imwrite(directory1+'C/'+str(count['c'])+'.jpg', roi)
     if interrupt % 256 == ord('d'):
-        cv2.imwrite(directory+'D/'+str(count['d'])+'.jpg', roi)
+        cv2.imwrite(directory1+'D/'+str(count['d'])+'.jpg', roi)
     if interrupt % 256 == ord('e'):
-        cv2.imwrite(directory+'E/'+str(count['e'])+'.jpg', roi)
+        cv2.imwrite(directory1+'E/'+str(count['e'])+'.jpg', roi)
     if interrupt % 256 == ord('f'):
-        cv2.imwrite(directory+'F/'+str(count['f'])+'.jpg', roi)
+        cv2.imwrite(directory1+'F/'+str(count['f'])+'.jpg', roi)
     if interrupt % 256 == ord('g'):
-        cv2.imwrite(directory+'G/'+str(count['g'])+'.jpg', roi)
+        cv2.imwrite(directory1+'G/'+str(count['g'])+'.jpg', roi)
     if interrupt % 256 == ord('h'):
-        cv2.imwrite(directory+'H/'+str(count['h'])+'.jpg', roi)
+        cv2.imwrite(directory1+'H/'+str(count['h'])+'.jpg', roi)
     if interrupt % 256 == ord('i'):
-        cv2.imwrite(directory+'I/'+str(count['i'])+'.jpg', roi)
+        cv2.imwrite(directory1+'I/'+str(count['i'])+'.jpg', roi)
     if interrupt % 256 == ord('j'):
-        cv2.imwrite(directory+'J/'+str(count['j'])+'.jpg', roi)
+        cv2.imwrite(directory1+'J/'+str(count['j'])+'.jpg', roi)
     if interrupt % 256 == ord('k'):
-        cv2.imwrite(directory+'K/'+str(count['k'])+'.jpg', roi)
+        cv2.imwrite(directory1+'K/'+str(count['k'])+'.jpg', roi)
     if interrupt % 256 == ord('l'):
-        cv2.imwrite(directory+'L/'+str(count['l'])+'.jpg', roi)
+        cv2.imwrite(directory1+'L/'+str(count['l'])+'.jpg', roi)
     if interrupt % 256 == ord('m'):
-        cv2.imwrite(directory+'M/'+str(count['m'])+'.jpg', roi)
+        cv2.imwrite(directory1+'M/'+str(count['m'])+'.jpg', roi)
     if interrupt % 256 == ord('n'):
-        cv2.imwrite(directory+'N/'+str(count['n'])+'.jpg', roi)
+        cv2.imwrite(directory1+'N/'+str(count['n'])+'.jpg', roi)
     if interrupt % 256 == ord('o'):
-        cv2.imwrite(directory+'O/'+str(count['o'])+'.jpg', roi)
+        cv2.imwrite(directory1+'O/'+str(count['o'])+'.jpg', roi)
     if interrupt % 256 == ord('p'):
-        cv2.imwrite(directory+'P/'+str(count['p'])+'.jpg', roi)
+        cv2.imwrite(directory1+'P/'+str(count['p'])+'.jpg', roi)
     if interrupt % 256 == ord('q'):
-        cv2.imwrite(directory+'Q/'+str(count['q'])+'.jpg', roi)
+        cv2.imwrite(directory1+'Q/'+str(count['q'])+'.jpg', roi)
     if interrupt % 256 == ord('r'):
-        cv2.imwrite(directory+'R/'+str(count['r'])+'.jpg', roi)
+        cv2.imwrite(directory1+'R/'+str(count['r'])+'.jpg', roi)
     if interrupt % 256 == ord('s'):
-        cv2.imwrite(directory+'S/'+str(count['s'])+'.jpg', roi)
+        cv2.imwrite(directory1+'S/'+str(count['s'])+'.jpg', roi)
     if interrupt % 256 == ord('t'):
-        cv2.imwrite(directory+'T/'+str(count['t'])+'.jpg', roi)
+        cv2.imwrite(directory1+'T/'+str(count['t'])+'.jpg', roi)
     if interrupt % 256 == ord('u'):
-        cv2.imwrite(directory+'U/'+str(count['u'])+'.jpg', roi)
+        cv2.imwrite(directory1+'U/'+str(count['u'])+'.jpg', roi)
     if interrupt % 256 == ord('v'):
-        cv2.imwrite(directory+'V/'+str(count['v'])+'.jpg', roi)
+        cv2.imwrite(directory1+'V/'+str(count['v'])+'.jpg', roi)
     if interrupt % 256 == ord('w'):
-        cv2.imwrite(directory+'W/'+str(count['w'])+'.jpg', roi)
+        cv2.imwrite(directory1+'W/'+str(count['w'])+'.jpg', roi)
     if interrupt % 256 == ord('x'):
-        cv2.imwrite(directory+'X/'+str(count['x'])+'.jpg', roi)
+        cv2.imwrite(directory1+'X/'+str(count['x'])+'.jpg', roi)
     if interrupt % 256 == ord('y'):
-        cv2.imwrite(directory+'Y/'+str(count['y'])+'.jpg', roi)
+        cv2.imwrite(directory1+'Y/'+str(count['y'])+'.jpg', roi)
     if interrupt % 256 == ord('z'):
-        cv2.imwrite(directory+'Z/'+str(count['z'])+'.jpg', roi)
+        cv2.imwrite(directory1+'Z/'+str(count['z'])+'.jpg', roi)
 
 cap.release()
 cv2.destroyAllWindows()

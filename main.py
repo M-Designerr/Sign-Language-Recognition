@@ -11,7 +11,7 @@ class App:
     def __init__(self, window):
         self.is_on = True
         # load the trained convolutional neural network and the label binarizer
-        self.directory = "Sign Language Recognition/model/"
+        self.directory = "model/"
         self.vid = cv2.VideoCapture(0)
         self.current_image = None  # current image from the camera
         self.current_image2 = None  # current image from the camera
