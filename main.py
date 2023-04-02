@@ -26,7 +26,7 @@ class App:
 
         self.json_file_num = open(self.directory+"model-bw-digit.json", "r")
         self.model_json_num = self.json_file_num.read()
-        self.json_file.close()
+        self.json_file_num.close()
         self.loaded_model_num = model_from_json(self.model_json_num)
         self.loaded_model_num.load_weights(self.directory+"model-bw-digit.h5")
 

@@ -1,6 +1,6 @@
 # Indian-sign-language-recognition
 
-Hello, This repository contains python implementation for recognising American Sign Language (ASL) gestures. As there is less research, there is no standard dataset avialable in the web. So, we decided to create our own [dataset](https://drive.google.com/open?id=1keWr7-X8aR4YMotY2m8SlEHlyruDDdVi) of gesture images. ASL dataset have all alphabets (A-Z) and numerics (0-9) with total classes = 35. Each class has 600 images. It uses CNN to train the required models for prediction.
+Hello, This repository contains python implementation for recognising American Sign Language (ASL) gestures. As there is less research, there is no standard dataset avialable in the web. So, we decided to create our own [dataset](https://drive.google.com/file/d/1KEwaAa_TtXI7yiiRI5PLvNcFwuNQkN7O/view?usp=sharing) of gesture images. ASL dataset have all alphabets (A-Z) and numerics (0-9) with total classes = 35. Each class has 600 images. It uses CNN to train the required models for prediction.
 
 ## Gestures
 
@@ -10,12 +10,12 @@ All the gestures used in the dataset are in the shown below image with labels.
 
 ## The prerequisites software & libraries for the sign language project are:
 * Python (3.7.4)
-* IDE (Jupyter)
-* NumPy (version 1.16.5)
-* cv2 (OpenCV) (version 3.4.2)
-* Keras (version 2.3.1)
+* IDE (Jupyter & VS Code)
+* NumPy (version 1.23.5)
+* cv2 (OpenCV) (version 4.7.0.72)
+* Keras (version 2.12.0)
 * Tensorflow (as Keras uses tensorflow in backend and for image pre-processing)
-(version 2.0.0)
+(version 2.12.0)
 
 ## Implementation
 
@@ -53,7 +53,7 @@ to preprocess all the images (from raw images to Thresholded images).
 
 >   python visualise.py
 
-Dataset can be downloaded from : 
+Dataset can be downloaded from : https://drive.google.com/file/d/1KEwaAa_TtXI7yiiRI5PLvNcFwuNQkN7O/view?usp=sharing
 
 
 
