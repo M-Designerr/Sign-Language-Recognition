@@ -28,7 +28,8 @@ class App:
         self.model_json_num = self.json_file_num.read()
         self.json_file_num.close()
         self.loaded_model_num = model_from_json(self.model_json_num)
-        self.loaded_model_num.load_weights(self.directory+"model-bw-digit.h5")
+        self.loaded_model_num.load_weights(
+            self.directory+"model-bw-digit.h5")
 
         self.ct = {}  # dictionary to store the count of each gesture
         self.ct['blank'] = 0  # count of the blank gesture
@@ -195,12 +196,14 @@ class App:
 
     def predicting_num(self, test_image):
         test_image = cv2.resize(test_image, (128, 128))
-        result = self.loaded_model.predict(test_image.reshape(1, 128, 128, 1))
+        result = self.loaded_model_num.predict(
+            test_image.reshape(1, 128, 128, 1))
         prediction = {}
         prediction['blank'] = result[0][10]
         inde = 0
         for i in range(10):
             prediction[str(i)] = result[0][inde]
+
             inde += 1
         # LAYER 1
         prediction = sorted(prediction.items(),
