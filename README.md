@@ -46,7 +46,7 @@ to preprocess all the images (from raw images to Thresholded images).
 
 **Step 3:** To train the the model run the file
 
->   python train_alpha.ipynb
+>   python train_alpha.ipynb<br/>
 >   python train_digit.ipynb
 
 **Step 4:** To visualise the confusion matrix run the file
